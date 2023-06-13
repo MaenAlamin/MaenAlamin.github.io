@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>صفحة السيارات</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header style="text-align: center;">
+        <img src="img/logo.png" alt="الشعار" style="transform: scale(2.5);">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">الصفحة الرئيسية</a></li>
+            <li><a href="aboutus.html">من نحن</a></li>
+            <li><a href="cars.html">السيارات</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- جدول-->
+        <h2>قائمة السيارات</h2>
+        <table>
+            <tr>
+                <th>نوع السيارة</th>
+                <th>تاريخ الصنع</th>
+                <th>نوع الإيجار</th>
+                <th>قيمة الإيجار/متضمنة الضرائب</th>
+                <th>صورة</th>
+            </tr>
+            <tr id="car1" onclick="populateCarInfo('car1')">
+                <td>Kia Rio</td>
+                <td>2009</td>
+                <td>يومي فقط</td>
+                <td>150,000 ل.س</td>
+                <td><img src="img/Kia.jpg" alt="سيارة 1"></td>
+            </tr>
+
+            <tr id="car2" onclick="populateCarInfo('car2')">
+                <td>kia-sportage-A/Ti-6-lX</td>
+                <td>2022</td>
+                <td>شهري فقط</td>
+                <td>500,000 ل.س</td>
+                <td><img src="img/kia-sportage.jpg" alt="سيارة 1"></td>
+            </tr>
+
+            <tr id="car3" onclick="populateCarInfo('car3')">
+                <td>Mercedes S class</td>
+                <td>2021</td>
+                <td>يومي فقط</td>
+                <td>200,000 ل.س</td>
+                <td><img src="img/Mercedes.jpg" alt="سيارة 1"></td>
+            </tr>
+            <tr id="car4" onclick="populateCarInfo('car4')">
+                <td>اودي-A5-سبورت باك</td>
+                <td>2020</td>
+                <td>شهري فقط</td>
+                <td>600,000 ل.س</td>
+                <td><img src="img/ode.jpg" alt="سيارة 1"></td>
+            </tr>
+            <tr id="car5" onclick="populateCarInfo('car5')">
+                <td>BMW-X5-2019</td>
+                <td>2019</td>
+                <td>يومي فقط</td>
+                <td>300,000 ل.س</td>
+                <td><img src="img/BMW.jpg" alt="سيارة 1"></td>
+            </tr>
+            <tr id="car6" onclick="populateCarInfo('car6')">
+                <td>NISSAN-Sentra</td>
+                <td>2017</td>
+                <td>شهري فقط</td>
+                <td>550,000 ل.س</td>
+                <td><img src="img/Sentra.jpg" alt="سيارة 1"></td>
+            </tr>
+            <tr id="car7" onclick="populateCarInfo('car7')">
+                <td>TOYOTA-Rush</td>
+                <td>2017</td>
+                <td>يومي فقط</td>
+                <td>250,000 ل.س</td>
+                <td><img src="img/rush.jpg" alt="سيارة 1"></td>
+            </tr>
+            <tr id="car8" onclick="populateCarInfo('car8')">
+                <td>Opel-Cross-Land</td>
+                <td>2015</td>
+                <td>يومي فقط</td>
+                <td>200,000 ل.س</td>
+                <td><img src="img/opel.jpg" alt="سيارة 1"></td>
+            </tr>
+            <tr id="car9" onclick="populateCarInfo('car9')">
+                <td>Peugeot</td>
+                <td>2010</td>
+                <td>شهري فقط</td>
+                <td>475,000 ل.س</td>
+                <td><img src="img/peg.jpg" alt="سيارة 1"></td>
+            </tr>
+            <tr id="car10" onclick="populateCarInfo('car10')">
+                <td>Hyundai i20</td>
+                <td>2015</td>
+                <td>يومي فقط</td>
+                <td>225,000 ل.س</td>
+                <td><img src="img/Hyundai.jpg" alt="سيارة 1"></td>
+            </tr>
+            <tr id="car11" onclick="populateCarInfo('car11')">
+                <td>Chevorlet Lanos</td>
+                <td>2006</td>
+                <td>شهري فقط</td>
+                <td>600,000 ل.س</td>
+                <td><img src="img/Chevrolet.jpg" alt="سيارة 1"></td>
+            </tr>
+
+           
+        </table>
+    </main>
+
+    <!-- نافذة، سيأخد المعلومات تلقائي من الجدول -->
+    <div id="car-info" class="popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePopup('car-info')">&times;</span>
+            <h2>معلومات السيارة</h2>
+            <table class="car-info-table">
+                <tr>
+                    <th>نوع السيارة</th>
+                    <td>Kia K5</td>
+                </tr>
+                <tr>
+                    <th>تاريخ الصنع</th>
+                    <td>2023</td>
+                </tr>
+                <tr>
+                    <th>نوع الإيجار</th>
+                    <td>يومي فقط</td>
+                </tr>
+                <tr>
+                    <th>رسم إعادة إعمار</th>
+                    <td>1500 ل.س (1%)</td>
+                </tr>
+                <tr>
+                    <th>الضريبة</th>
+                    <td>7500 ل.س (5% من قيمة الإيجار)</td>
+                </tr>
+                <tr>
+                    <th>قيمة الإيجار</th>
+                    <td>159,000 ل.س</td>
+                </tr>
+                <tr>
+                    <th>صورة إضافية</th>
+                    <td><img src="img/car1.png" alt="سيارة 1"></td>
+                </tr>
+            </table>
+            <div class="follow-button">   
+                        
+                <label for="car-checkbox">متابعة</label>
+                <input type="checkbox" id="car-checkbox" style="visibility:hidden;"/> 
+                <a href="index.html" class="cancel-button">الغاء</a>
+            </div>
+
+            <form id="car-form">
+                <label for="full-name">الاسم الكامل</label>
+                <input type="text" id="full-name" pattern="[ء-ي\s]+" required placeholder="الاسم باللغة العربية" oninvalid="setCustomValidity('الرجاء إدخال الاسم باللغة العربية')" oninput="setCustomValidity('')"/>
+                <label for="id">الرقم الوطني</label>
+                <input type="text" id="id" pattern="^[0-9]{11}$" required placeholder="الرقم الوطني" oninvalid="setCustomValidity('يرجى إدخال الرقم الوطني المؤلف من 11 خانة')" oninput="setCustomValidity('')" />
+                <label for="date-of-birth">تاريخ الولادة</label>
+                <input type="text" id="date-of-birth" pattern="^(0[1-9]|1[0-9]|2[0-9]|3[0-1])-(0[1-9]|1[0-2])-\d{4}$" required placeholder="أدخل تاريخ الولادة على الشكل dd-mm-yyyy" value="" max="2023-06-25" oninvalid="setCustomValidity('الرجاء إدخال التاريخ بطريقة صحيحة على الشكل dd-mm-yyyy')" oninput="setCustomValidity('')">
+                <label for="tel">رقم الموبايل</label>
+                <input type="text" id="tel" pattern="^09[3-9]\d{7}$" required placeholder="رقم الموبايل" oninvalid="setCustomValidity('الرجاء إدخال رقم الموبايل بطريقة صحيحة')" oninput="setCustomValidity('')"/>
+                <label for="email">الإيميل</label>
+                <input type="email" id="email" required placeholder="الإيميل" oninvalid="setCustomValidity('الرجاء التحقق من الإيميل')" oninput="setCustomValidity('')"/>
+                <label for="duration">فترة الآجار</label>
+                <input type="text" id="duration" pattern="\d+" required oninvalid="setCustomValidity('الرجاء إدخال رقم صحيح')" oninput="setCustomValidity('')"/>
+                <label for="captcha">أدخل الرمز التالي</label>
+                <label id="captcha-text"></label>
+                <input type="text" id="captcha" required />
+                <button type="submit" id="submit">تقديم الطلب</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+
+        function openPopup(popupId) {
+            var popup = document.getElementById(popupId);
+            popup.style.display = "block";
+        }
+
+        function closePopup(popupId) {
+            var popup = document.getElementById(popupId);
+            popup.style.display = "none";
+        }
+
+        function generateCaptcha(length) {
+            var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var result = '';
+
+            for (var i = 0; i < length; i++) {
+                var randomIndex = Math.floor(Math.random() * chars.length)
+                result += chars.charAt(randomIndex);
+            }
+            return result;
+        }
+
+        function populateCarInfo(carId) {
+            var carType = document.getElementById(carId).getElementsByTagName("td")[0].innerHTML;
+            var carManufactureDate = document.getElementById(carId).getElementsByTagName("td")[1].innerHTML;
+            var carRentalType = document.getElementById(carId).getElementsByTagName("td")[2].innerHTML;
+            var carRentValue = document.getElementById(carId).getElementsByTagName("td")[3].innerHTML;
+            var carImageSrc = document.getElementById(carId).getElementsByTagName("img")[0].src;
+
+            var popup = document.getElementById('car-info');
+            var popupContent = popup.getElementsByClassName('popup-content')[0];
+
+            var carInfoTable = popupContent.getElementsByClassName('car-info-table')[0];
+            carInfoTable.getElementsByTagName('td')[0].innerHTML = carType;
+            carInfoTable.getElementsByTagName('td')[1].innerHTML = carManufactureDate;
+            carInfoTable.getElementsByTagName('td')[2].innerHTML = carRentalType;
+            carInfoTable.getElementsByTagName('td')[3].innerHTML = calculateReconstructionFee(carRentValue);
+            carInfoTable.getElementsByTagName('td')[4].innerHTML = calculateTax(carRentValue);
+            carInfoTable.getElementsByTagName('td')[5].innerHTML = carRentValue;
+
+            var carImage = carInfoTable.getElementsByTagName('img')[0];
+            carImage.src = carImageSrc;
+            carImage.alt = carType;
+
+            popup.style.display = "block";
+
+
+        }
+        // حساب الضريبة و رسم اعادة الاعمار
+        function calculateReconstructionFee(rentValue) {
+            var feePercentage = 1; // 1% fee
+            var fee = parseFloat(rentValue.replace(',', '')) * (feePercentage / 100);
+            return fee.toLocaleString('ar-EG') + " ل.س";
+        }
+
+        function calculateTax(rentValue) {
+            var taxPercentage = 5; // 5% tax
+            var tax = parseFloat(rentValue.replace(',', '')) * (taxPercentage / 100);
+            return tax.toLocaleString('ar-EG') + " ل.س";
+        }
+
+        var checkbox = document.getElementById("car-checkbox");
+        var captchaText = document.getElementById("captcha-text");
+        var form = document.getElementById("car-form")
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                form.classList.add('visible');
+                captchaText.textContent = generateCaptcha(6);
+            } else {
+                form.classList.remove('visible');
+                captchaText.textContent = '';
+            }
+        })
+
+        var submit = document.getElementById("submit");
+
+        submit.addEventListener("click", function(event) {
+            event.preventDefault();
+            var captchaText = document.getElementById("captcha-text").textContent;
+            var captchaField = document.getElementById("captcha").value;
+
+            var carsInfo = document.getElementById('car-info')
+            var carsContent = carsInfo.getElementsByClassName('popup-content')[0]
+            var carDetails = carsContent.getElementsByClassName('car-info-table')[0]
+            var baseRent = parseFloat(carDetails.getElementsByTagName('td')[5].innerHTML.replace(/\D/g, ""));
+            var duration = parseFloat(document.getElementById("duration").value);
+            var TotalRent = (baseRent * duration) + baseRent * 0.06
+
+
+            if (captchaField == captchaText) {
+                alert(TotalRent);
+            }
+        })
+
+    </script>
+</body>
+</html>
