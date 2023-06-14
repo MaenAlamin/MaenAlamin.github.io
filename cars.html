@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -109,7 +109,7 @@
                 <td><img src="img/Chevrolet.jpg" alt="سيارة 1"></td>
             </tr>
 
-           
+
         </table>
     </main>
 
@@ -148,26 +148,26 @@
                     <td><img src="img/car1.png" alt="سيارة 1"></td>
                 </tr>
             </table>
-            <div class="follow-button">   
-                        
+            <div class="follow-button">
+
                 <label for="car-checkbox">متابعة</label>
-                <input type="checkbox" id="car-checkbox" style="visibility:hidden;"/> 
+                <input type="checkbox" id="car-checkbox" style="visibility:hidden;" />
                 <a href="index.html" class="cancel-button">الغاء</a>
             </div>
 
             <form id="car-form">
                 <label for="full-name">الاسم الكامل</label>
-                <input type="text" id="full-name" pattern="[ء-ي\s]+" required placeholder="الاسم باللغة العربية" oninvalid="setCustomValidity('الرجاء إدخال الاسم باللغة العربية')" oninput="setCustomValidity('')"/>
+                <input type="text" id="full-name" placeholder="الاسم باللغة العربية" required />
                 <label for="id">الرقم الوطني</label>
-                <input type="text" id="id" pattern="^[0-9]{11}$" required placeholder="الرقم الوطني" oninvalid="setCustomValidity('يرجى إدخال الرقم الوطني المؤلف من 11 خانة')" oninput="setCustomValidity('')" />
+                <input type="text" id="id" placeholder="الرقم الوطني" required/>
                 <label for="date-of-birth">تاريخ الولادة</label>
-                <input type="text" id="date-of-birth" pattern="^(0[1-9]|1[0-9]|2[0-9]|3[0-1])-(0[1-9]|1[0-2])-\d{4}$" required placeholder="أدخل تاريخ الولادة على الشكل dd-mm-yyyy" value="" max="2023-06-25" oninvalid="setCustomValidity('الرجاء إدخال التاريخ بطريقة صحيحة على الشكل dd-mm-yyyy')" oninput="setCustomValidity('')">
+                <input type="text" id="date-of-birth" placeholder="أدخل تاريخ الولادة على الشكل dd-mm-yyyy" required/>
                 <label for="tel">رقم الموبايل</label>
-                <input type="text" id="tel" pattern="^09[3-9]\d{7}$" required placeholder="رقم الموبايل" oninvalid="setCustomValidity('الرجاء إدخال رقم الموبايل بطريقة صحيحة')" oninput="setCustomValidity('')"/>
+                <input type="text" id="tel" placeholder="رقم الموبايل" required/>
                 <label for="email">الإيميل</label>
-                <input type="email" id="email" required placeholder="الإيميل" oninvalid="setCustomValidity('الرجاء التحقق من الإيميل')" oninput="setCustomValidity('')"/>
+                <input type="email" id="email" placeholder="الإيميل" required/>
                 <label for="duration">فترة الآجار</label>
-                <input type="text" id="duration" pattern="\d+" required oninvalid="setCustomValidity('الرجاء إدخال رقم صحيح')" oninput="setCustomValidity('')"/>
+                <input type="text" id="duration" placeholder="فترة آجار السيارة" required/>
                 <label for="captcha">أدخل الرمز التالي</label>
                 <label id="captcha-text"></label>
                 <input type="text" id="captcha" required />
@@ -254,21 +254,52 @@
 
         var submit = document.getElementById("submit");
 
-        submit.addEventListener("click", function(event) {
+        submit.addEventListener("click", function (event) {
             event.preventDefault();
             var captchaText = document.getElementById("captcha-text").textContent;
             var captchaField = document.getElementById("captcha").value;
+
+            var name = document.getElementById("full-name").value;
+            var id = document.getElementById("id").value;
+            var birthDate = document.getElementById("date-of-birth").value;
+            var mobile = document.getElementById("tel").value;
+            var email = document.getElementById("email").value;
+            var duration = parseFloat(document.getElementById("duration").value);
 
             var carsInfo = document.getElementById('car-info')
             var carsContent = carsInfo.getElementsByClassName('popup-content')[0]
             var carDetails = carsContent.getElementsByClassName('car-info-table')[0]
             var baseRent = parseFloat(carDetails.getElementsByTagName('td')[5].innerHTML.replace(/\D/g, ""));
-            var duration = parseFloat(document.getElementById("duration").value);
             var TotalRent = (baseRent * duration) + baseRent * 0.06
 
-
+            if (!/^[\u0621-\u064A\u0020]+$/.test(name)) {
+                alert("يرجى إدخال الاسم الكامل باللغة العربية");
+                return;
+            }
+            if (!/^[0-9]{11}$/.test(id)) {
+                alert("يرجى إدخال الرقم الوطني المؤلف من 11 رقم");
+                return;
+            }
+            if (!/^(0[1-9]|1[0-9]|2[0-9]|3[0-1])-(0[1-9]|1[0-2])-\d{4}$/.test(birthDate)) {
+                alert("يرجى إدخال تاريخ الميلاد على الشكل 17-01-1994");
+                return;
+            }
+            if (!/^09[3-9]\d{7}$/.test(mobile)) {
+                alert("يرجى التحقق من رقم الموبايل");
+                return;
+            }
+            if (!/^[\w+.-]+@\w+([.-]\w+)*\.\w{2,}$/.test(email)) {
+                alert("يرجى التحقق من البريد الإلكتروني");
+                return;
+            }
+            if (isNaN(duration)) {
+                alert("تأكد من فترة الآجار");
+                return;
+            }
             if (captchaField == captchaText) {
-                alert(TotalRent);
+                alert("المبلغ الكامل المستحق هو: " + TotalRent);
+            } else {
+                alert("تحقق من الCaptcha");
             }
         })
 
